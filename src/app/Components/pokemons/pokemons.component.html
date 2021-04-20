@@ -1,0 +1,15 @@
+<div *ngIf="this.PaginationPokeCard == null">
+    <img class="imgLoading" src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif">
+</div>
+
+<div *ngFor="let i of PaginationPokeCard.results">
+
+    <mat-card routerLink="details" [queryParams]="{debug: true}">
+
+        <img class="imageCard" src="{{i.urlImage}}" />
+
+        <h4>{{i.name}}</h4>
+
+    </mat-card>
+
+</div>

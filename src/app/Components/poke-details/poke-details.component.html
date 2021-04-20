@@ -1,0 +1,28 @@
+<button mat-raised-button color="primary" routerLink="../"> <mat-icon>reply_all</mat-icon>  Primary</button>
+
+<mat-card routerLink="details">
+
+    <img src="{{PokeCards.UrlImage}}" />
+
+    <h4>{{PokeCards.Name}}</h4>
+
+    <h5>Base_experience: {{PokeCards.Base_experience}}</h5>
+    <h5>Height: {{PokeCards.Height}}</h5>
+    <h5>Weight: {{PokeCards.Weight}}</h5>
+
+    <h5>Type:
+        <h5 *ngFor="let t of PokeCards.Type"> {{t}}
+        </h5>
+    </h5>
+
+    <h5>Abilities:
+        <h5 *ngFor="let a of PokeCards.Abilities"> {{a}}
+        </h5>
+    </h5>
+
+    <h5>Moves:
+        <h5 *ngFor="let m of PokeCards.Moves"> {{m}}
+        </h5>
+    </h5>
+
+</mat-card>

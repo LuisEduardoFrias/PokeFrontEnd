@@ -1,0 +1,13 @@
+mat-toolbar {
+    background: black;
+}
+
+button {
+    background: black;
+    color: white;
+}
+
+h1 {
+    font-size: 30px;
+    margin-right: 15px;
+}
