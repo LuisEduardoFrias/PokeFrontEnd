@@ -5,6 +5,7 @@ mat-toolbar {
 button {
     background: black;
     color: white;
+    cursor: pointer;
 }
 
 h1 {

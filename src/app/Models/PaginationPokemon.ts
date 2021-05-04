@@ -1,9 +1,9 @@
 import { Results} from './Results';
 
 export class PaginationPokemon{
-    Count: number;
-    Next: string;
-    Previeus: string;
+    count: number;
+    next: string;
+    previeus: string;
     results: Results[];
 
     constructor(
@@ -11,9 +11,9 @@ export class PaginationPokemon{
     next: string,
     previeus: string,
     results: Results[]) {
-        this.Count = count;
-        this.Next = next;
-        this.Previeus = previeus;
+        this.count = count;
+        this.next = next;
+        this.previeus = previeus;
         this.results = results;
     }
 }

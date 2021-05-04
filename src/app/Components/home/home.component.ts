@@ -9,32 +9,30 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
   
-  private Contador = 0;
+  private Contador : number = 0;
   
-  Urlimage = '';
+  Urlimage : string = '';
 
-   private ListUrlImage = [
-    "http://fondospantalla.net/wp-content/uploads/2017/02/Fondos-de-pantalla-Pokemon-Imagenes-hd-fotos-wallpaper-para-celular-android.jpg",
-    "http://fondospantalla.net/wp-content/uploads/2017/02/Fondos-de-pantalla-Pokemon-Imagenes-hd-fotos-wallpaper-para-celular-android-2.jpg",
-    "http://fondospantalla.net/wp-content/uploads/2017/02/Fondos-de-pantalla-Pokemon-Imagenes-hd-fotos-wallpaper-para-celular-android-3.jpg",
-    "http://fondospantalla.net/wp-content/uploads/2017/02/Fondos-de-pantalla-Pokemon-Imagenes-hd-fotos-wallpaper-para-celular-android-4.jpg",
-    "http://fondospantalla.net/wp-content/uploads/2017/02/Fondos-de-pantalla-Pokemon-Imagenes-hd-fotos-wallpaper-para-celular-android-6.jpg"]
+  private ListUrlImage = [
+    "https://wallpapercave.com/wp/wp7547538.jpg",
+    "https://nintendowire.com/wp-content/uploads/2020/11/banner_poke%CC%81mon_anime_season_4_johto_league_champions.jpg",
+    "https://media.redadn.es/imagenes/articulos_334540.jpg",
+    "https://www.tec.com.pe/wp-content/uploads/2016/07/Pokemon.jpg",
+    "https://i.ytimg.com/vi/IFsdt2btkAk/maxresdefault.jpg"]
 
   ngOnInit(): void {
 
     setInterval(() =>
     {
-      
-      this.Contador++;
-
       this.Urlimage = this.ListUrlImage[this.Contador];
 
-      if (this.Contador == 4) {
+      this.Contador++;  
+
+      if (this.Contador == 5) {
         this.Contador = 0;
       }
     
     }, 2000);
-
 
   }
 

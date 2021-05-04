@@ -12,7 +12,10 @@ const routes: Routes = [
     path: "pokemons", component: PokemonsComponent
   },
   {
-    path: "pokemons/details", component: PokeDetailsComponent,
+    path: "pokemons/details/:name", component: PokeDetailsComponent
+  },
+  {
+    path: "**", redirectTo: ''
   }];
 
 @NgModule({

@@ -1,27 +1,148 @@
 button {
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
-img {
-    width: 100px;
-    height: 130px;
-    background: black;
-    border-radius: 15px 15px;
+.imgLoading {
+    position: relative;
+    z-index: 9;
+    margin: auto;
+    display: block;
+    width: 100%;
+    height: Calc(100vh - 140px)
+}
+
+#PokeCard {
+    padding: 16px;
+    display: flex;
+    display: block;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    margin: 0px 20px 20px 20px;
+}
+
+#namePoke {
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
     display: block;
 }
 
-mat-card {
-    margin: 5px;
-    cursor: pointer;
+#imgPoke {
+    width: 203px;
+    height: 242px;
     border-radius: 15px 15px;
+    background-color: rgba(84, 81, 0, 0.707);
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
-h4 h5 {
-    text-align: center;
-    border: 1px dotted #000;
-    padding: 8px;
+#cube {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 219px;
+    height: 258px;
+    animation: move 10s infinite;
+    transform-style: preserve-3d;
 }
 
-div {
-    margin-top: 50px;
+@keyframes move {
+    0% {
+        transform: rotate3d(1, 9, 0, 0deg), translate(-50%, -50%)
+    }
+    50% {
+        transform: rotate3d(1, 9, 0, 90deg), translate(-50%, -50%)
+    }
+    100% {
+        transform: rotate3d(1, 9, 0, -360deg), translate(-50%, -50%)
+    }
+}
+
+#cube>.PokeCard {
+    position: absolute;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    transition: transform 2s;
+}
+
+#PokeCard1 {
+    transform: rotateX(90deg) translateZ(200px);
+}
+
+#PokeCard2 {
+    transform: translateZ(200px);
+}
+
+#PokeCard3 {
+    transform: rotatey(90deg) translatez(200px);
+}
+
+#PokeCard4 {
+    transform: rotatey(180deg) translatez(200px);
+}
+
+#PokeCard5 {
+    transform: rotatey(-90deg) translatez(200px);
+}
+
+#PokeCard6 {
+    transform: rotatey(0deg) rotatex(-90deg) translatez(200px);
+}
+
+#div {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+#data {
+    background-color: rgba(255, 255, 0, 0.4);
+}
+
+#Types {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+#Abilities {
+    background-color: rgba(0, 0, 255, 0.4);
+}
+
+#Moves {
+    background-color: rgba(0, 128, 0, 0.4);
+}
+
+#mat-card div mat-label {
+    display: block;
+}
+
+#mat-card div mat-list {
+    display: block;
+}
+
+#mat-card div mat-list mat-list-item {
+    margin-left: 10px;
+}
+
+mat-list {
+    margin-top: 10px;
+}
+
+mat-list mat-list-item {
+    margin: 2px;
+    display: inline;
+}
+
+span {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-style: normal;
+}
+
+#mat-card {
+    margin: 5px;
+    border-radius: 15px 15px;
 }

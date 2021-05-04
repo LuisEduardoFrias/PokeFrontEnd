@@ -1,14 +1,39 @@
-<div *ngIf="this.PaginationPokeCard == null">
+<div *ngIf="paginationPokeCard == null && !iserror">
     <img class="imgLoading" src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif">
 </div>
 
-<div *ngFor="let i of PaginationPokeCard.results">
+<div *ngIf="iserror">
+    <img class="imgLoading" src="../../../assets/Image Error _files/internetshutdown-graphics.008.jpeg">
+</div>
 
-    <mat-card routerLink="details" [queryParams]="{debug: true}">
+<div id="pokemos" *ngIf="paginationPokeCard != null">
 
-        <img class="imageCard" src="{{i.urlImage}}" />
+    <div id="paginator">
 
-        <h4>{{i.name}}</h4>
+        <button (click)="pageEvent('previeus')" *ngIf="previeus >= 0" class="buttonPaginator" id="buttonPaginator1" mat-flat-button>
+
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button (click)="pageEvent('next')" class="buttonPaginator" id="buttonPaginator2" mat-flat-button>
+
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <span class="descriptionPaginator" *ngIf="next == 20">
+            paginas 0 - {{next}}  of  {{paginationPokeCard.count}} </span>
+
+        <span class="descriptionPaginator" *ngIf="next != 20">
+            paginas {{previeus + 20}} - {{next}} of  {{paginationPokeCard.count}} </span>
+
+    </div>
+
+
+    <mat-card id="PokeCard" *ngFor="let i of paginationPokeCard.results">
+
+        <mat-title id="namePoke">{{i.name}}</mat-title>
+
+        <img id="imgPoke" (click)="Navigator(i.name,i.url)" mat-card-image src="{{i.urlImage}}" alt="imagen de {{i.name}}">
 
     </mat-card>
 

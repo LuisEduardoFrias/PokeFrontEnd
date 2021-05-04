@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../Services/HttpService';
 import { PaginationPokemon } from '../../Models/PaginationPokemon';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemons',
@@ -9,53 +10,118 @@ import { PaginationPokemon } from '../../Models/PaginationPokemon';
 })
 export class PokemonsComponent implements OnInit {
 
-  constructor(private httpservice: HttpService) { }
+  //propertis
 
-  PaginationPokeCard: PaginationPokemon;
+  page?:string = null;
+  paginationPokeCard: PaginationPokemon;
+  next:number;
+  previeus: number;
+  iserror: boolean = false;
 
-  /*PaginationPokeCard =
-    new PaginationPokemon(0, "", "", [
-        new Pokemon("bulbasaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "")
-      , new Pokemon("ivysaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png", "")
-      , new Pokemon("venusaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png", "")
-      , new Pokemon("charmander", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png", "")
-      , new Pokemon("charmeleon", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png", "")
-      , new Pokemon("charizard", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png", "")
-      , new Pokemon("squirtle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png", "")
-      , new Pokemon("wartortle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png", "")
-      , new Pokemon("blastoise", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png", "")
-      , new Pokemon("bulbasaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "")
-      , new Pokemon("ivysaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png", "")
-      , new Pokemon("venusaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png", "")
-      , new Pokemon("charmander", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png", "")
-      , new Pokemon("charmeleon", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png", "")
-      , new Pokemon("charizard", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png", "")
-      , new Pokemon("squirtle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png", "")
-      , new Pokemon("wartortle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png", "")
-      , new Pokemon("blastoise", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png", "")
-      , new Pokemon("bulbasaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png", "")
-      , new Pokemon("ivysaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png", "")
-      , new Pokemon("venusaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png", "")
-      , new Pokemon("charmander", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png", "")
-      , new Pokemon("charmeleon", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png", "")
-      , new Pokemon("charizard", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png", "")
-      , new Pokemon("squirtle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png", "")
-      , new Pokemon("wartortle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png", "")
-      , new Pokemon("blastoise", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png", "")]);
-  */
-  
+  //propertis
+
+
+  constructor(private httpservice: HttpService, private router : Router) { 
+    var navegate = this.router.getCurrentNavigation();
+    this.page = navegate?.extras?.state?.value;
+  }
+
+
+
   ngOnInit(): void {
     
+    if(this.page == null)
+    {
+      this.GetNetApi(null);
+    }
+    else
+    {
+      this.GetNetApi(Number(this.page) - 20);
+    }
+  };
 
-    const PokeCard =  this.httpservice.GetNetApi("api/Pokemon")
-      .subscribe(pokecard =>
-      {        
-        this.PaginationPokeCard = pokecard;
-        
-        console.log(this.PaginationPokeCard);
 
-      }, error => console.error(error));
-    
+  Navigator(name:string, url : string) {
+
+      var LastIndex = url.lastIndexOf("/");
+      var NewLastIndex = url.substring(0, LastIndex).lastIndexOf("/") + 1;
+
+      var navegation : NavigationExtras = {
+        state : {
+          value : this.next,
+          id: url.substring(NewLastIndex, LastIndex)
+        }
+      };
+
+      this.router.navigate(['pokemons/details',name], navegation);
   }
+
+
+  pageEvent(starting: string) {
+
+    var pag: number;
+    var nan = false;
+
+    if(starting == 'next')
+    {
+      pag = this.next;
+    }
+    else if(starting == 'previeus')
+    {
+      if(this.previeus < 0 && this.previeus != -20 )
+      {  
+        nan = true;
+      }
+      else 
+      {
+        if(this.previeus == -20){
+          pag = 0;
+        }
+        else
+        {
+          pag = this.previeus;
+        }
+        
+      }
+    }
+    else
+    {
+      nan = true;
+    }
+
+    if(!nan)
+    {
+      this.paginationPokeCard = null;
+    
+      this.GetNetApi(pag);
+    }
+  }
+
+
+  GetNetApi(pag ? : number){
+
+    this.httpservice.GetNetApi(pag)
+    .subscribe(pokecard =>
+    {
+        this.paginationPokeCard = pokecard;
+
+        var num = this.paginationPokeCard.next.substring(
+            this.paginationPokeCard.next.indexOf("=") + 1,
+            this.paginationPokeCard.next.indexOf("&")
+          );
+
+        this.next = Number(num);
+        this.previeus = Number(num) - 40;
+        
+    }, error => {
+
+      this.iserror = true;
+
+      console.error(error);
+
+      });
+
+  }
+
 
 }

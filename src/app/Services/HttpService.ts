@@ -14,11 +14,17 @@ export class HttpService{
     
     private ApiPath = environment.ApiPath;      
 
-    GetNetApi(url:string) : Observable<any> {
-        return this.http.get<any>(this.ApiPath + url);
+    GetNetApi(starting:number) : Observable<any> {
+        if(starting === null)
+            return this.http.get<any>(this.ApiPath + "api/pokemon");
+        else
+            return this.http.get<any>(this.ApiPath + "api/pokemon/" + starting);
     }
 
-    GetPokeApi(url:string) : Observable<any> {
-       return this.http.get<any>("https://pokeapi.co/api/v2/pokemon/" + url)
+    
+    GetApiPkeDetails(id:string) : Observable<any> {
+        return this.http.get<any>(this.ApiPath + "api/pokedetails/" + id);
     }
+
+
 }

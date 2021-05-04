@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './Modules/app-routing.module';
-import { AppComponent } from './Components/app.component';
+import { AppComponent } from './Components/app-component/app.component';
 import { PokemonsComponent } from './Components/pokemons/pokemons.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -10,6 +10,7 @@ import { PokeDetailsComponent } from './Components/poke-details/poke-details.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './Modules/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ImageErrorDirective } from './Directives/image-error.directive';
  
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     MenuComponent,
     HomeComponent,
     PokeDetailsComponent,
+    ImageErrorDirective,
   ],
   imports: [
     BrowserModule,

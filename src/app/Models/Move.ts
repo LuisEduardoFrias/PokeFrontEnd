@@ -1,7 +1,7 @@
 export class Move{
-    Name: String;
+    name: String;
 
     constructor(name: String) {
-        this.Name = name;
+        this.name = name;
     }
 }

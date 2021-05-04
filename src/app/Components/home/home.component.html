@@ -1,4 +1,5 @@
-<img *ngIf="this.Urlimage !== ''" src="{{this.Urlimage}}" />
-<div *ngIf="this.Urlimage == ''">
-    <img src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif">
+<img *ngIf="Urlimage !== ''" appImageError alt="slide de imagenes" src='{{Urlimage}}' />
+
+<div *ngIf="Urlimage == ''">
+    <img src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif" />
 </div>

@@ -1,28 +1,94 @@
-<button mat-raised-button color="primary" routerLink="../"> <mat-icon>reply_all</mat-icon>  Primary</button>
+<button mat-raised-button color="primary" (click)="Back()"> <mat-icon>reply_all</mat-icon>  Primary</button>
 
-<mat-card routerLink="details">
+<div *ngIf="PokeCards == null">
+    <img class="imgLoading" src="https://cdn.dribbble.com/users/621155/screenshots/2835314/simple_pokeball.gif">
+</div>
 
-    <img src="{{PokeCards.UrlImage}}" />
+<div id="div" *ngIf="PokeCards != null">
 
-    <h4>{{PokeCards.Name}}</h4>
+    <mat-card id="mat-card">
 
-    <h5>Base_experience: {{PokeCards.Base_experience}}</h5>
-    <h5>Height: {{PokeCards.Height}}</h5>
-    <h5>Weight: {{PokeCards.Weight}}</h5>
+        <div id="imaDiv">
 
-    <h5>Type:
-        <h5 *ngFor="let t of PokeCards.Type"> {{t}}
-        </h5>
-    </h5>
+            <div id="cube">
 
-    <h5>Abilities:
-        <h5 *ngFor="let a of PokeCards.Abilities"> {{a}}
-        </h5>
-    </h5>
+                <mat-card id="PokeCard1" class="PokeCard">
 
-    <h5>Moves:
-        <h5 *ngFor="let m of PokeCards.Moves"> {{m}}
-        </h5>
-    </h5>
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
 
-</mat-card>
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+
+                <mat-card id="PokeCard2" class="PokeCard">
+
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
+
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+
+                <mat-card id="PokeCard3" class="PokeCard">
+
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
+
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+
+                <mat-card id="PokeCard4" class="PokeCard">
+
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
+
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+
+                <mat-card id="PokeCard5" class="PokeCard">
+
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
+
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+
+                <mat-card id="PokeCard6" class="PokeCard">
+
+                    <mat-title id="namePoke">{{PokeCards.name}}</mat-title>
+
+                    <img id="imgPoke" mat-card-image src="{{PokeCards.urlImage}}" alt="imagen de {{PokeCards.Name}}">
+
+                </mat-card>
+            </div>
+
+        </div>
+
+        <div>
+
+            <mat-list id="data" role="list">
+                <mat-list-item role="listitem"><span>Base experience:</span> {{PokeCards.base_experience}}</mat-list-item>
+                <mat-list-item role="listitem"><span>Height:</span> {{PokeCards.height}} </mat-list-item>
+                <mat-list-item role="listitem"><span>Weight:</span> {{PokeCards.weight}} </mat-list-item>
+            </mat-list>
+
+        </div>
+
+        <div>
+
+            <mat-list id="Types" role="list"><span>Types:</span>
+                <mat-list-item role="listitem" *ngFor="let t of PokeCards.types">{{t.name}}, </mat-list-item>
+            </mat-list>
+
+            <mat-list id="Abilities" role="list"> <span>Abilities: </span>
+                <mat-list-item role="listitem" *ngFor="let a of PokeCards.abilities">{{a.name}}, </mat-list-item>
+            </mat-list>
+
+            <mat-list id="Moves" role="list"><span>Moves:</span>
+                <mat-list-item role="listitem" *ngFor="let m of PokeCards.moves">{{m.name}}, </mat-list-item>
+            </mat-list>
+
+        </div>
+
+    </mat-card>
+
+</div>
