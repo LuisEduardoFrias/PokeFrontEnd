@@ -4,7 +4,7 @@
     margin: 20px auto;
     display: block;
     width: 100%;
-    height: Calc(100vh - 140px)
+    height: Calc(100vh - 110px)
 }
 
 mat-label {

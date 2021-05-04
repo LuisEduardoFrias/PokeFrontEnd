@@ -12,6 +12,11 @@ button {
     height: Calc(100vh - 140px)
 }
 
+
+#imaDiv{
+    height: 250px;
+}
+
 #PokeCard {
     padding: 16px;
     display: flex;
@@ -31,8 +36,8 @@ button {
 }
 
 #imgPoke {
-    width: 203px;
-    height: 242px;
+    width: 200px;
+    height: 200px;
     border-radius: 15px 15px;
     background-color: rgba(84, 81, 0, 0.707);
     margin-left: auto;
@@ -42,23 +47,22 @@ button {
 
 #cube {
     position: relative;
-    top: 50%;
-    left: 50%;
-    width: 219px;
-    height: 258px;
+    left: 40%;
+    width: 200px;
+    height: 200px;
     animation: move 10s infinite;
     transform-style: preserve-3d;
 }
 
 @keyframes move {
     0% {
-        transform: rotate3d(1, 9, 0, 0deg), translate(-50%, -50%)
+        transform: rotate3d(1, 9, 0, 0deg)
     }
     50% {
-        transform: rotate3d(1, 9, 0, 90deg), translate(-50%, -50%)
+        transform: rotate3d(1, 9, 0, 90deg)
     }
     100% {
-        transform: rotate3d(1, 9, 0, -360deg), translate(-50%, -50%)
+        transform: rotate3d(1, 9, 0, -360deg)
     }
 }
 
@@ -70,27 +74,27 @@ button {
 }
 
 #PokeCard1 {
-    transform: rotateX(90deg) translateZ(200px);
+    transform: rotateX(90deg) translateZ(120px);
 }
 
 #PokeCard2 {
-    transform: translateZ(200px);
+    transform: translateZ(120px);
 }
 
 #PokeCard3 {
-    transform: rotatey(90deg) translatez(200px);
+    transform: rotatey(90deg) translatez(120px);
 }
 
 #PokeCard4 {
-    transform: rotatey(180deg) translatez(200px);
+    transform: rotatey(180deg) translatez(120px);
 }
 
 #PokeCard5 {
-    transform: rotatey(-90deg) translatez(200px);
+    transform: rotatey(-90deg) translatez(120px);
 }
 
 #PokeCard6 {
-    transform: rotatey(0deg) rotatex(-90deg) translatez(200px);
+    transform: rotatey(0deg) rotatex(-90deg) translatez(120px);
 }
 
 #div {
